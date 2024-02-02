@@ -37,6 +37,9 @@
         td.auto-skip {
             color: var(--spice-button-active);
         }
+        .x-downloadButton-DownloadButton{
+            display: none
+        }
     `
     document.body.appendChild(styleSheet);
 
@@ -89,16 +92,20 @@
         fetch("http://127.0.0.1:8888/spicedl/start/"+encodeURIComponent(response.name)+"/"+encodeURIComponent(url))
     }
 
+    downloadIcon='<svg viewBox="5 5 14 14" width="16" height="16" fill="currentcolor"><path d="M12 6.05a1 1 0 0 1 1 1v7.486l1.793-1.793a1 1 0 1 1 1.414 1.414L12 18.364l-4.207-4.207a1 1 0 1 1 1.414-1.414L11 14.536V7.05a1 1 0 0 1 1-1z"></path></svg>'
+
     new Spicetify.Menu.Item(
         "Downloads",
         false,
         ()=>Spicetify.PopupModal.display({ title: "Downloads", content: downloadList, isLarge: true }),
+        downloadIcon
     ).register();
 
     new Spicetify.ContextMenu.Item(
     "Download",
     startDownload,
-    ()=>true
+    ()=>true,
+    downloadIcon
     ).register();
 
 })();
