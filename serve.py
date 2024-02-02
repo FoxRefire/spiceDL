@@ -23,7 +23,7 @@ def start(name, url):
 def remove(uuid):
     global process
     try:
-        process[uuid].kill()
+        process[uuid]["proc"].kill()
     except:
         pass
     del process[uuid]
