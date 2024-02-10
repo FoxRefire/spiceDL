@@ -8,7 +8,7 @@ Install this extension from marketplace or add `spiceDL.js` into `config-xpui.in
 
 And then start [python daemon](https://github.com/FoxRefire/spiceDL/blob/main/serve.py).
 ```
-pip3 install spotdl flask flask_cors # Install dependencies
+pip3 install spotdl flask flask_cors tkinter # Install dependencies
 python3 serve.py
 ```
 
