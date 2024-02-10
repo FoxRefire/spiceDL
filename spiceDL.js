@@ -103,6 +103,7 @@
         ].forEach((replace)=>apiurl=apiurl.replace(replace[0],replace[1]))
         response=await Spicetify.CosmosAsync.get(apiurl);
         fetch("http://127.0.0.1:8888/spicedl/start/"+encodeURIComponent(response.name)+"/"+encodeURIComponent(url))
+        Spicetify.showNotification("Download started!");
     }
 
     function setDownloadDir(){
