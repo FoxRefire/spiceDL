@@ -45,22 +45,30 @@
 
     //Downloads list window elements
     downloadList=Spicetify.React.createElement(
-        'table',
-        { className: "styled-table", id: "downloads" },
+        'div',
+        {},
+        Spicetify.React.createElement('label', {}, 'Download Directory'),
+        Spicetify.React.createElement('input', { type:"text", id:"directory", readonly:"true" }),
+        Spicetify.React.createElement('button', { onClick:setDownloadDir }, 'Browse'),
+        Spicetify.React.createElement('button', { onClick:resetDownloadDir }, 'Reset'),
         Spicetify.React.createElement(
-            'thead',
-            {},
+            'table',
+            { className: "styled-table", id: "downloads" },
             Spicetify.React.createElement(
-                'tr',
-                { },
-                Spicetify.React.createElement('th', { }, 'Name'),
-                Spicetify.React.createElement('th', { }, 'Status'),
-                Spicetify.React.createElement('th', { }, ' ')
+                'thead',
+                {},
+                Spicetify.React.createElement(
+                    'tr',
+                    { },
+                    Spicetify.React.createElement('th', { }, 'Name'),
+                    Spicetify.React.createElement('th', { }, 'Status'),
+                    Spicetify.React.createElement('th', { }, ' ')
+                )
+            ),
+            Spicetify.React.createElement(
+                'tbody',
+                {}
             )
-        ),
-        Spicetify.React.createElement(
-            'tbody',
-            {}
         )
     );
 
@@ -70,6 +78,10 @@
         if(pointer){
             response=await fetch('http://127.0.0.1:8888/spicedl/status')
             json=await response.json()
+
+            response=await fetch('http://localhost:8888/spicedl/downloadDir/get')
+            directory=await response.text()
+            document.querySelector("#directory").value=directory
 
             pointer.innerHTML="";
             Object.keys(json).forEach((uuid)=>{
@@ -82,6 +94,7 @@
         }
     },800)
 
+    //Downloading function
     async function startDownload(baseuri){
         url = apiurl = Spicetify.URI.fromString(baseuri[0]).toURL();
         [
@@ -92,11 +105,19 @@
         fetch("http://127.0.0.1:8888/spicedl/start/"+encodeURIComponent(response.name)+"/"+encodeURIComponent(url))
     }
 
+    function setDownloadDir(){
+        fetch("http://127.0.0.1:8888/spicedl/downloadDir/set")
+    }
+    function resetDownloadDir(){
+        fetch("http://127.0.0.1:8888/spicedl/downloadDir/reset")
+    }
+
     downloadIcon='<svg viewBox="5 5 14 14" width="16" height="16" fill="currentcolor"><path d="M12 6.05a1 1 0 0 1 1 1v7.486l1.793-1.793a1 1 0 1 1 1.414 1.414L12 18.364l-4.207-4.207a1 1 0 1 1 1.414-1.414L11 14.536V7.05a1 1 0 0 1 1-1z"></path></svg>'
 
+    //Append Menu Items
     new Spicetify.Menu.Item(
         "Downloads",
-        false,
+        true,
         ()=>Spicetify.PopupModal.display({ title: "Downloads", content: downloadList, isLarge: true }),
         downloadIcon
     ).register();
