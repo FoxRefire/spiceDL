@@ -2,7 +2,7 @@
   {
     "name": "SpiceDL",
     "description": "Spicetify extension for download musics using spotDL ",
-    "preview": "https://github.com/FoxRefire/spiceDL/raw/Screenshot/Screenshot1.png?raw=true",
+    "preview": "https://github.com/FoxRefire/spiceDL/blob/Screenshot/Icon.png?raw=true",
     "main": "spiceDL.js",
     "readme": "README.md",
     "authors": [
