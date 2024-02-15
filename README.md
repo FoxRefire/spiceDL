@@ -1,5 +1,5 @@
 # SpiceDL
-[![Github Stars badge](https://img.shields.io/github/stars/FoxRefire/spiceDL?logo=github&style=social)](https://github.com/CharlieS1103/spicetify-extensions/)
+[![Github Stars badge](https://img.shields.io/github/stars/FoxRefire/spiceDL?logo=github&style=social)](https://github.com/FoxRefire/spiceDL)
 
 Spicetify extension for download musics using spotDL
 
