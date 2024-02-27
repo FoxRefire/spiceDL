@@ -12,7 +12,9 @@ pip3 install spotdl flask flask_cors tkinter # Install dependencies
 python3 serve.py
 ```
 
+
 Alternatively, you can use zotify as downloading backend of music/podcast.
+
 Use this [alternative daemon](https://github.com/FoxRefire/spiceDL/blob/main/serve_zotify.py)
 ```
 pip3 install spotdl flask flask_cors git+https://zotify.xyz/zotify/zotify.git
